@@ -89,11 +89,14 @@
 
 - (void)selectAsset:(PHAsset *)asset
 {
-    [self.selectedAssets insertObject:asset atIndex:self.selectedAssets.count];
-    [self updateDoneButton];
-    
-    if(self.displaySelectionInfoToolbar)
-        [self updateToolbar];
+    // check if get maximumImagesCount
+    if ([self.selectedAssets count] < self.maximumImagesCount) {
+        [self.selectedAssets insertObject:asset atIndex:self.selectedAssets.count];
+        [self updateDoneButton];
+        
+        if(self.displaySelectionInfoToolbar)
+            [self updateToolbar];
+    }
 }
 
 - (void)deselectAsset:(PHAsset *)asset
@@ -107,7 +110,9 @@
 }
 
 - (void)selectFetchItem:(GMFetchItem *)fetch_item{
-    [self.selectedFetches insertObject:fetch_item atIndex:self.selectedFetches.count];
+    if ([self.selectedFetches count] < self.maximumImagesCount) {
+        [self.selectedFetches insertObject:fetch_item atIndex:self.selectedFetches.count];
+    }
 }
 
 - (void)deselectFetchItem:(GMFetchItem *)fetch_item{

@@ -443,6 +443,9 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
     if ( cell == nil || fetch_item==nil || fetch_item.be_progressed ) {
         return NO;
     }
+    else if ([self.picker.selectedAssets count] >= self.picker.maximumImagesCount) {
+        return NO;
+    }
  
     if ( fetch_item.be_saving_img == false && fetch_item.image_fullsize == nil  ) {
         

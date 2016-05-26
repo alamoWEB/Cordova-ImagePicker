@@ -47,6 +47,7 @@ typedef enum : NSUInteger {
     if (message == (id)[NSNull null]) {
       message = nil;
     }
+    self.maximumImagesCount = [[options objectForKey:@"maximumImagesCount"] integerValue];
     self.width = [[options objectForKey:@"width"] integerValue];
     self.height = [[options objectForKey:@"height"] integerValue];
     self.quality = [[options objectForKey:@"quality"] integerValue];
@@ -65,6 +66,7 @@ typedef enum : NSUInteger {
     picker.colsInLandscape = 6;
     picker.minimumInteritemSpacing = 2.0;
     picker.modalPresentationStyle = UIModalPresentationPopover;
+    picker.maximumImagesCount = self.maximumImagesCount;
     
     UIPopoverPresentationController *popPC = picker.popoverPresentationController;
     popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
@@ -167,7 +169,25 @@ typedef enum : NSUInteger {
             // no scaling required
             if (self.outputType == BASE64_STRING){
                 UIImage* image = [UIImage imageNamed:item.image_fullsize];
-                [result_all addObject:[UIImageJPEGRepresentation(image, self.quality/100.0f) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+                NSData* data = UIImageJPEGRepresentation(image, self.quality/100.0f);
+
+                SEL s1 = NSSelectorFromString(@"cdv_base64EncodedString");
+                SEL s2 = NSSelectorFromString(@"base64EncodedString");
+                SEL s3 = NSSelectorFromString(@"base64EncodedStringWithOptions:");
+
+                if ([data respondsToSelector:s1]) {
+                    NSString* (*func)(id, SEL) = (void *)[data methodForSelector:s1];
+                    [result_all addObject:func(data, s1)];
+                } else if ([data respondsToSelector:s2]) {
+                    NSString* (*func)(id, SEL) = (void *)[data methodForSelector:s2];
+                    [result_all addObject:func(data, s2)];
+                } else if ([data respondsToSelector:s3]) {
+                    NSString* (*func)(id, SEL, NSUInteger) = (void *)[data methodForSelector:s3];
+                    [result_all addObject:func(data, s3, 0)];
+                }
+                else {
+                    [result_all addObject:[UIImageJPEGRepresentation(image, self.quality/100.0f) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+                }
             } else {
                 if (self.quality == 100) {
                     // no scaling, no downsampling, this is the fastest option

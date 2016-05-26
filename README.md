@@ -8,9 +8,9 @@ Cordova Plugin For Multiple Image Selection - implemented for iOS and Android 4.
 The plugin conforms to the Cordova plugin specification, it can be installed
 using the Cordova / Phonegap command line interface.
 
-    phonegap plugin add https://github.com/wymsee/cordova-imagePicker.git
+    phonegap plugin add https://github.com/alamoWEB/ImagePicker.git
 
-    cordova plugin add https://github.com/wymsee/cordova-imagePicker.git
+    cordova plugin add https://github.com/alamoWEB/ImagePicker.git
 
 
 ## Using the plugin
@@ -109,11 +109,11 @@ The user will then need to allow access and invoke the same method again after d
 
 ## Libraries used
 
-#### ELCImagePicker
+#### GMImagePicker
 
-For iOS this plugin uses the ELCImagePickerController, with slight modifications for the iOS image picker.  ELCImagePicker uses the MIT License which can be found in the file LICENSE.
+An image & video picker supporting multiple selection and several customizations. Powered by the new iOS 8 Photo framework.
 
-https://github.com/B-Sides/ELCImagePickerController
+https://github.com/guillermomuntaner/GMImagePicker
 
 #### MultiImageChooser
 

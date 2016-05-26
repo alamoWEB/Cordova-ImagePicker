@@ -39,6 +39,7 @@ static CGSize const kPopoverContentSize = {480, 720};
  */
 @property (nonatomic, strong) NSMutableArray *selectedAssets;
 @property (nonatomic, strong) NSMutableArray *selectedFetches;
+@property (nonatomic, assign) NSInteger maximumImagesCount;
 
 
 /** UI Customizations **/

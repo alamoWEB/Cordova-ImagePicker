@@ -28,7 +28,7 @@
  *
  */
 
-package com.synconset;
+package br.com.alamoweb;
 
 import java.net.URI;
 import java.io.ByteArrayOutputStream;
@@ -43,7 +43,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.synconset.FakeR;
+import br.com.alamoweb.FakeR;
 import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.app.ProgressDialog;

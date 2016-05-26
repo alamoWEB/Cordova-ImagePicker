@@ -1,7 +1,7 @@
 /**
  * An Image Picker Plugin for Cordova/PhoneGap.
  */
-package com.synconset;
+package br.com.alamoweb;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
