@@ -1,0 +1,28 @@
+{
+  "version": "2.2.3",
+  "name": "cordova-plugin-alamoweb-imagepicker",
+  "cordova_name": "ImagePicker",
+  "description": "This plugin allows selection of multiple images from the camera roll / gallery in a cordova app",
+  "license": "MIT",
+  "issue": "",
+  "keywords": [],
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "cordova": {
+    "id": "cordova-plugin-alamoweb-imagepicker",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alamoWEB/Cordova-ImagePicker.git"
+  },
+  "engines": {
+    "name": "cordova",
+    "version": ">=3.5.0"
+  }
+}
